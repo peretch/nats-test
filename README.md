@@ -12,6 +12,7 @@ This repository contains an example connecting node applications with a NATS Str
 - Other libraries and types definitions (`ts-node-dev`, `typescript`, `@types/node`)
 
 ## Terminology
+
 - **subject**: Is the _channel_ that where we are pushing an event
 - **channel**: Is what we are subscribing to
 - **subscription**: Is what is actually listening to the _channel_ and eventually receive some data
@@ -27,11 +28,15 @@ This repository contains an example connecting node applications with a NATS Str
 ### Making NATS Service visible
 
 For exposing our NATS Streaming Server, we will make a port forward to the running pod.
+
 1. Check your pod name with command `kubectl get pods`
 2. Copy your running pod name (for example `nats-depl-7c95b5f667-zw5cc`)
 3. Fordward the port `4222` with command `kubectl port-forward nats-depl-7c95b5f667-zw5cc 4222:4222`
 4. After doing this, in a third terminal, we can run `npm run publish` and check if connection is OK (We should receive `publisher connected to NATS` log)
 
+### Publisher
+
+Publisher script (`npm run publish`) will connect to nats server and create an example push of data to channel `ticket:created`.
 ### Listener
 
-### Publisher
+Listener script (`npm run listen`) will connect to nats server and listen for data in channel `ticket:created`.

@@ -4,8 +4,8 @@
   "description": "This repository contains an example connecting node applications with a NATS Streaming Server by using node-nats-streaming npm package",
   "main": "index.js",
   "scripts": {
-    "publish": "ts-node-dev --notify false src/publisher.ts",
-    "listen": "ts-node-dev --notify false src/listener.ts"
+    "publish": "ts-node-dev --rs --notify false src/publisher.ts",
+    "listen": "ts-node-dev --rs --notify false src/listener.ts"
   },
   "keywords": [
     "nats"

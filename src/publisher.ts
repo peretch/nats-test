@@ -1,11 +1,13 @@
 import nats from 'node-nats-streaming';
 
+console.clear();
+
 // "stan" is commonly used for nats instances (Is NATS written backwards)
 // Could be "client" or something loke that.
 
 // 'bti' is the clusterId specified with "-cid" parameter by using docker image nats-streaming:0.17.0
 // 'abc' is
-const stan = nats.connect('bti', 'abc', {
+const stan = nats.connect('bti', 'clientIdA', {
   url: 'http://localhost:4222',
 });
 
@@ -18,8 +20,8 @@ stan.on('connect', () => {
     price: 20,
   };
   // We cannot emit events with data as JavaScript objects, we need to send plain text
-  const plainData = JSON.stringify(data);
-  stan.publish('ticket:created', plainData, () => {
+  const message = JSON.stringify(data);
+  stan.publish('ticket:created', message, () => {
     console.log('Event ticket:created was emmited');
   });
 });
