@@ -19,6 +19,14 @@ This repository contains an example connecting node applications with a NATS Str
 
 ## Usage
 
+### Making NATS Service visible
+
+For exposing our NATS Streaming Server, we will make a port forward to the running pod.
+1. Check your pod name with command `kubectl get pods`
+2. Copy your running pod name (for example `nats-depl-7c95b5f667-zw5cc`)
+3. Fordward the port `4222` with command `kubectl port-forward nats-depl-7c95b5f667-zw5cc 4222:4222`
+4. After doing this, in a third terminal, we can run `npm run publish` and check if connection is OK (We should receive `publisher connected to NATS` log)
+
 ### Listener
 
 ### Publisher
