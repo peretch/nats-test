@@ -1,0 +1,14 @@
+{
+  "name": "nats-test",
+  "version": "1.0.0",
+  "description": "This repository contains an example connecting node applications with a NATS Streaming Server by using node-nats-streaming npm package",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "nats"
+  ],
+  "author": "sebastian@peretch.com",
+  "license": "MIT"
+}
