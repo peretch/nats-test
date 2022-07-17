@@ -10,5 +10,16 @@ const stan = nats.connect('bti', 'abc', {
 });
 
 stan.on('connect', () => {
-  console.log('publisher connected to NATS')
-})
+  console.log('publisher connected to NATS');
+
+  const data = {
+    id: '1emdf912me',
+    title: 'Title',
+    price: 20,
+  };
+  // We cannot emit events with data as JavaScript objects, we need to send plain text
+  const plainData = JSON.stringify(data);
+  stan.publish('ticket:created', plainData, () => {
+    console.log('Event ticket:created was emmited');
+  });
+});

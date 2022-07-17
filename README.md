@@ -11,6 +11,11 @@ This repository contains an example connecting node applications with a NATS Str
 - npm package [node-nats-streaming](https://www.npmjs.com/package/node-nats-streaming) for interacting with NATS Streaming Server.
 - Other libraries and types definitions (`ts-node-dev`, `typescript`, `@types/node`)
 
+## Terminology
+- **subject**: Is the _channel_ that where we are pushing an event
+- **channel**: Is what we are subscribing to
+- **subscription**: Is what is actually listening to the _channel_ and eventually receive some data
+
 ## Installation
 
 1. `npm install`
