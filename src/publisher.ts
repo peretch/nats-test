@@ -1,4 +1,5 @@
 import nats from 'node-nats-streaming';
+import { randomBytes } from 'crypto';
 
 console.clear();
 
@@ -7,7 +8,7 @@ console.clear();
 
 // 'bti' is the clusterId specified with "-cid" parameter by using docker image nats-streaming:0.17.0
 // 'abc' is
-const stan = nats.connect('bti', 'clientIdA', {
+const stan = nats.connect('bti', randomBytes(4).toString('hex'), {
   url: 'http://localhost:4222',
 });
 
