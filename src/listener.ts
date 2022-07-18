@@ -10,7 +10,10 @@ const stan = nats.connect('bti', randomBytes(4).toString('hex'), {
 stan.on('connect', () => {
   console.log('listener connected to NATS');
 
-  const subscription = stan.subscribe('ticket:created');
+  const subscription = stan.subscribe(
+    'ticket:created',
+    'listener-service-queue-group'
+  );
 
   subscription.on('message', (msg: Message) => {
     // Returns the data associated with the message payload. If the stanEncoding is not
