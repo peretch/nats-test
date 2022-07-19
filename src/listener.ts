@@ -10,9 +10,16 @@ const stan = nats.connect('bti', randomBytes(4).toString('hex'), {
 stan.on('connect', () => {
   console.log('listener connected to NATS');
 
+  const options = stan
+    .subscriptionOptions()
+    // Manual Ack Mode will let us control when message was acceptable received
+    // With this setted in 'true', we need to declare explicit where the message is received an processed OK
+    .setManualAckMode(true);
+
   const subscription = stan.subscribe(
     'ticket:created',
-    'listener-service-queue-group'
+    'listener-service-queue-group',
+    options
   );
 
   subscription.on('message', (msg: Message) => {
@@ -31,5 +38,8 @@ stan.on('connect', () => {
         `Event received: \n  - number: #${sequence}\n  - channel: ${channel}\n  - data: ${data}`
       );
     }
+
+    // Here we confirm that the event was processed OK
+    msg.ack();
   });
 });

@@ -40,3 +40,18 @@ Publisher script (`npm run publish`) will connect to nats server and create an e
 ### Listener
 
 Listener script (`npm run listen`) will connect to nats server and listen for data in channel `ticket:created`.
+
+
+### NATS Monitoring
+
+To enable NATS monitoring, we need to forwar dpor `8222`.
+
+1. Check your pod name with command `kubectl get pods`
+2. Write command `kubectl port-forward nats-depl-7c95b5f667-zw5cc 8222:8222`
+
+After doing this, you will be able to go to http://localhost:8222, here are some importante sites
+
+#### Useful URLs
+
+- http://localhost:8222/streaming/channelsz: List of channels
+- http://localhost:8222/streaming/channelsz?subs=1 Extended list of channels
