@@ -55,3 +55,12 @@ After doing this, you will be able to go to http://localhost:8222, here are some
 
 - http://localhost:8222/streaming/channelsz: List of channels
 - http://localhost:8222/streaming/channelsz?subs=1 Extended list of channels
+
+
+
+# Messages app
+
+## Basic NestJS flow
+
+![NestJS basic flow](https://user-images.githubusercontent.com/44510623/195880686-f88aa55d-1647-49e4-a429-2280e0998376.jpg)
+
